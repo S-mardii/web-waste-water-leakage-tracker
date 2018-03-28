@@ -1,29 +1,17 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', "MapController@imagespagination");
-Route::get('/language', "MapController@languageswitcher");
 
+Route::get('/language', "MapController@languageswitcher");
 Route::post('/language', array(
     'Middleware' => 'LanguageSwitcher',
     'uses' => 'MapController@switcher'
 ));
 
-//Route::get('aboutus', function () {
-//    return view("homepage.aboutushomepage");
-//}
+Route::get('/about-us', 'HomeController@aboutUs');
 
-Route::get('aboutus', 'HomeController@aboutus');
 //export
 Route::get('export-file/{type}', 'ExcelController@exportFile')->name('export.file');
 Route::get('download-image/{type}', 'ExcelController@downloadImage');
@@ -31,7 +19,6 @@ Route::get('download-image/{type}', 'ExcelController@downloadImage');
 
 Route::get("/map", "MapController@index");
 Route::post('/', 'MapController@search');
-Route::get('/home', 'HomeController@index');
 Route::get('/editprofile', 'UserController@edit');
 
 Route::auth();

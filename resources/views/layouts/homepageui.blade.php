@@ -18,6 +18,10 @@
         font-size: 22px;
     }
 
+    .font-size-17-px {
+        font-size: 17px;
+    }
+
     .text-color {
         color: #A4C1DA;
     }
@@ -82,7 +86,7 @@
         <div class="container">
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right nav-bar-text">
-                    <li {{ (Request::is('/aboutus') ? 'class="active"' : '') }}><a href="{{url('aboutus')}}"> ABOUT US</a></li>
+                    <li {{ (Request::is('/about-us') ? 'class="active"' : '') }}><a href="{{url('about-us')}}"> ABOUT US</a></li>
                     <li><a href="{{url("report")}}"> DASHBOARD</a></li>
                     @if(Auth::check())
                         <li class="dropdown">
@@ -117,7 +121,7 @@
                 <div class="row mt-3">
                     <div class="col-md-12 col-lg-12 col-xl-12 mb-r footer-font-size">
                         <h2>Disclaimer</h2>
-                        <h4>{{$aboutus['disclaimer']}} </h4>
+                        <h4>{{$aboutUs['disclaimer']}} </h4>
                         <h2>Join us</h2>
                         <div class="collapse navbar-collapse margin-left-18px">
                             <ul class="nav navbar-nav navbar-left">

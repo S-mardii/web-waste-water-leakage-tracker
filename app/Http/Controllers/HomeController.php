@@ -2,35 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\AboutUsModel;
-use Illuminate\Http\Request;
+use App\AboutUs;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function aboutUs()
     {
-        $this->middleware('auth');
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('home');
-    }
-
-    public function aboutus()
-    {
-        return view("homepage.aboutushomepage", [
-            "aboutus" => (new AboutUsModel())->getAll()
+        return view('homepage.about-us', [
+            'aboutUs' => (new AboutUs())->getAll()
         ]);
     }
 }
