@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\AboutUsModel;
+use App\AboutUs;
 use App\AreaModel;
 use App\ConditionModel;
 use App\StatusModel;
@@ -19,7 +19,7 @@ class SettingController extends Controller
             "status" => (new StatusModel())->getStatus(),
             "areas" => (new AreaModel())->getAreas(),
             "conditions" => (new ConditionModel())->getConditions(),
-            "aboutus" => (new AboutUsModel())->getAll(),
+            "aboutus" => (new AboutUs())->getAll(),
             "id" => $id
         ]);
 
@@ -115,7 +115,7 @@ class SettingController extends Controller
     {
         $aboutus = $request->aboutus;
         $disclaimer = $request->disclaimer;
-        $aboutUsObj = new AboutUsModel();
+        $aboutUsObj = new AboutUs();
         if($aboutUsObj->updateAboutus($aboutus, $disclaimer) == 1)
         {
             return Redirect("setting/4")->with("status", "Succesfully updated!");

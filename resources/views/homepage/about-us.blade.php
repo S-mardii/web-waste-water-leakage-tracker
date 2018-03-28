@@ -1,11 +1,19 @@
 @extends ('layouts.homepageui')
 
 @section ('section')
-    <div class="container" style="color: #A4C1DA;">
-        <h2>About Us</h2>
-        <h4>{{$aboutus['aboutus']}}</h4>
-        <h2>Disclaimer</h2>
-        <h4>{{$aboutus['disclaimer']}} </h4>
+    <div class="container">
+        <div class="about-us">
+            <h2>About Us</h2>
+            <p class="font-size-17-px">{{ $aboutUs['aboutUs'] }}</p>
+        </div>
+
+        <div class="disclaimer">
+            <h2>Disclaimer</h2>
+            <p class="font-size-17-px">{{ $aboutUs['disclaimer']}} </p>
+        </div>
+
+
+        <!-- Hidden section -->
         {{--<h3>Partner</h3>--}}
         {{--<div class="row">--}}
             {{--<div class="col-md-4">--}}
@@ -40,5 +48,6 @@
             {{--</div>--}}
         {{--</div>--}}
         {{--<h3>Contact Information</h3>--}}
+        <!-- End hidden section -->
     </div>
 @stop

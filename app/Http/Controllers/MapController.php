@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\AboutUsModel;
+use App\AboutUs;
 use App\AreaModel;
 use App\ConditionModel;
 use App\PostModel;
@@ -28,12 +28,12 @@ class MapController extends Controller
         $datas = (new PostModel())->getPostPagination();
         $maps = collect($datas->items());
         return view('homepage.map', [
-            "datas" => $datas,
-            "maps" => $maps,
+            "datas"      => $datas,
+            "maps"       => $maps,
             "conditions" => (new ConditionModel())->getConditions(),
-            "areas" => (new AreaModel())->getAreas(),
-            "aboutus" => (new AboutUsModel())->getAll(),
-            "search" => "0"
+            "areas"      => (new AreaModel())->getAreas(),
+            "aboutUs"    => (new AboutUs())->getAll(),
+            "search"     => "0"
         ]);
     }
 
@@ -45,7 +45,7 @@ class MapController extends Controller
 
         $pagination = (new PostModel())->search($area_id, $condition_id, $from, $to);
         $maps = collect($pagination->items());
-//        set a sesstion for search
+        //set a sesstion for search
         $request->session()->put('search', [$area_id, $condition_id, $from, $to]);
 
         return view('homepage.map', [
@@ -53,7 +53,7 @@ class MapController extends Controller
             "maps" => $maps,
             "conditions" => (new ConditionModel())->getConditions(),
             "areas" => (new AreaModel())->getAreas(),
-            "aboutus" => (new AboutUsModel())->getAll(),
+            "aboutUs" => (new AboutUs())->getAll(),
             "search" => "1"
         ]);
     }
