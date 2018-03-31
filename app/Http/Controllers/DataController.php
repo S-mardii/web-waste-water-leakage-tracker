@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use App\AboutUs;
 
-class HomeController extends Controller
+class DataController extends Controller
 {
-    public function aboutUs()
+    public function index()
     {
-        return view('pages.about-us', [
+        return view('pages.data', [
             'aboutUs' => (new AboutUs())->getAll()
         ]);
     }
