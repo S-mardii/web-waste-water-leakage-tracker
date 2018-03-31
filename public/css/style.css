@@ -1,0 +1,28 @@
+.btn-primary {
+  background-color: #1C3144 !important;
+}
+
+.margin-top-1-rem {
+  margin-top: 1rem;
+}
+
+.padding-1-rem {
+  padding: 1rem 1rem !important;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none !important;
+}
+
+nav.bg-dark {
+  background-color: #1C3144 !important;
+}
+
+ul.bg-dark {
+  border-top: 1px solid #0D0233;
+  background-color: #1C3144 !important;
+}

@@ -2,7 +2,17 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', "MapController@imagespagination");
+// Map Route
+Route::get('/', 'MapController@imagespagination')->name('map.index');
+
+// Data Route
+Route::get('/data', 'DataController@index')->name('data.index');
+
+// Team Route
+Route::get('/team', 'TeamController@index')->name('team.index');
+
+// About Us page
+Route::get('/about-us', 'HomeController@aboutUs')->name('about-us.index');
 
 Route::get('/language', "MapController@languageswitcher");
 Route::post('/language', array(
@@ -10,7 +20,9 @@ Route::post('/language', array(
     'uses' => 'MapController@switcher'
 ));
 
-Route::get('/about-us', 'HomeController@aboutUs');
+
+
+
 
 //export
 Route::get('export-file/{type}', 'ExcelController@exportFile')->name('export.file');

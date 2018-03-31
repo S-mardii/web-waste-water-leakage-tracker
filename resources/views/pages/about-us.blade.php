@@ -1,6 +1,6 @@
-@extends ('layouts.homepageui')
+@extends ('layouts.master')
 
-@section ('section')
+@section ('body')
     <div class="container">
         <div class="about-us">
             <h2>About Us</h2>
