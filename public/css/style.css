@@ -1,13 +1,104 @@
+.bg-dark {
+  background-color: #1C3144 !important;
+}
+
 .btn-primary {
   background-color: #1C3144 !important;
+}
+
+.btn-csv {
+  background: transparent none;
+  border-color: #6C757D;
+  color: #6C757D;
+}
+
+.btn-csv:hover {
+  background-color: #6C757D;
+  border-color: #6C757D;
+  color: #FFF;
+}
+
+.btn-xls {
+  background: transparent none;
+  border-color: #34A853;
+  color: #34A853;
+}
+
+.btn-xls:hover {
+  background-color: #34A853;
+  border-color: #34A853;
+  color: #FFF;
+}
+
+.btn-xlsx {
+  background: transparent none;
+  border-color: #4285F4;
+  color: #4285F4;
+}
+
+.btn-xlsx:hover {
+  background-color: #4285F4;
+  border-color: #4285F4;
+  color: #FFF;
+}
+
+.btn-jpeg {
+  background: transparent none;
+  border-color: #FBBC05;
+  color: #FBBC05;
+}
+
+.btn-jpeg:hover {
+  background-color: #FBBC05;
+  border-color: #FBBC05;
+  color: #FFF;
+}
+
+.btn-map {
+  background: transparent none;
+  border-color: #EA4335;
+  color: #EA4335;
+}
+
+.btn-map:hover {
+  background-color: #EA4335;
+  border-color: #EA4335;
+  color: #FFF;
+}
+
+.fine {
+  background-color: #34A853;
+  color: #34A853;
 }
 
 .margin-top-1-rem {
   margin-top: 1rem;
 }
 
+.margin-right-0-2-em {
+  margin-right: 0.2em;
+}
+
+.margin-right-1rem {
+  margin-right: 1rem !important;
+}
+
 .padding-1-rem {
   padding: 1rem 1rem !important;
+}
+
+.padding-1-5-rem {
+  padding: 1.5rem 1.5rem !important;
+}
+
+.serious {
+  background-color: #EA4335;
+  color: #EA4335;
+}
+
+.warning {
+  background-color: #FBBC05;
+  color: #FBBC05;
 }
 
 a {
@@ -18,11 +109,36 @@ a:hover {
   text-decoration: none !important;
 }
 
-nav.bg-dark {
-  background-color: #1C3144 !important;
+a.social-icon {
+  font-size: xx-large;
+  margin: 0.2em;
+}
+
+div.circle {
+  border: 2px solid #FFFFFF;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px;
+  display: inline-block;
+  height: 6rem;
+  position: relative;
+  text-align: center;
+  width: 6rem;
+}
+
+span.circle {
+  color: #FFFFFF;
+  font-weight: bold;
+  font-size: 1.5em;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 ul.bg-dark {
   border-top: 1px solid #0D0233;
   background-color: #1C3144 !important;
+}
+
+ul.no-list-style {
+  list-style-type: none;
 }

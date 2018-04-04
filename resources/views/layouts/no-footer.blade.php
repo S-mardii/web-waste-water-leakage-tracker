@@ -11,7 +11,9 @@
 <body>
     @include('includes.header')
 
-    @yield('body')
+    <div class="padding-1-rem">
+        @yield('body')
+    </div>
 
     @include('includes.foot')
     @stack('after-scripts')

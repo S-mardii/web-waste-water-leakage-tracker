@@ -7,6 +7,7 @@ Route::get('/', 'MapController@imagespagination')->name('map.index');
 
 // Data Route
 Route::get('/data', 'DataController@index')->name('data.index');
+Route::post('/data', 'DataController@search')->name('data.search');
 
 // Team Route
 Route::get('/team', 'TeamController@index')->name('team.index');
@@ -20,17 +21,13 @@ Route::post('/language', array(
     'uses' => 'MapController@switcher'
 ));
 
-
-
-
-
 //export
 Route::get('export-file/{type}', 'ExcelController@exportFile')->name('export.file');
 Route::get('download-image/{type}', 'ExcelController@downloadImage');
 //end export
 
 Route::get("/map", "MapController@index");
-Route::post('/', 'MapController@search');
+Route::post('/', 'MapController@search')->name('map.search');
 Route::get('/editprofile', 'UserController@edit');
 
 Route::auth();

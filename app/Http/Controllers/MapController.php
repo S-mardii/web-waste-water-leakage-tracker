@@ -37,6 +37,13 @@ class MapController extends Controller
         ]);
     }
 
+    /**
+     * Search on Map
+     *
+     * @param Request $request
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function search(Request $request) {
         $condition_id = (int)$request->condition_id;
         $area_id = (int)$request->area_id;
@@ -49,12 +56,14 @@ class MapController extends Controller
         $request->session()->put('search', [$area_id, $condition_id, $from, $to]);
 
         return view('pages.map', [
-            "datas" => $pagination,
-            "maps" => $maps,
-            "conditions" => (new ConditionModel())->getConditions(),
-            "areas" => (new AreaModel())->getAreas(),
-            "aboutUs" => (new AboutUs())->getAll(),
-            "search" => "1"
+            'datas' => $pagination,
+            'maps' => $maps,
+            'conditions' => (new ConditionModel())->getConditions(),
+            'areas' => (new AreaModel())->getAreas(),
+            'aboutUs' => (new AboutUs())->getAll(),
+            'search' => true,
+            'from' => $from,
+            'to' => $to,
         ]);
     }
 

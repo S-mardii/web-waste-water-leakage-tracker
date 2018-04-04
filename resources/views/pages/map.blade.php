@@ -1,4 +1,5 @@
 @extends ('layouts.no-footer')
+
 <style>
     html, body {
         height: 100%;
@@ -49,7 +50,11 @@
 @section ('body')
 
     {{-- search-box --}}
-    @include('includes.partials.search')
+    <div class="container">
+        <form role="form" method="post" action="{{ route('map.search') }}">
+            @include('includes.partials.search')
+        </form>
+    </div>
     {{-- /search-box --}}
 
     {{-- google-map --}}

@@ -7,10 +7,6 @@
 
 	<title> Waste Water Leakage Tracker </title>
 
-	<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
-	<link rel="stylesheet" href="{{ asset('css/animate.min.css') }}" />
-	<link rel="stylesheet" href="{{ asset('css/style.css') }}" />
-
 	@stack('after-styles')
 </head>
 
@@ -22,7 +18,9 @@
 	</div>
 
 	<footer class="page-footer center-on-small-only text-color">
-		@include('includes.footer')
+		<div class="container-fluid bg-dark padding-1-5-rem">
+			@include('includes.footer')
+		</div>
 
 		@include('includes.foot')
 		@stack('after-scripts')

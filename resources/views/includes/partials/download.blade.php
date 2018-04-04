@@ -1,17 +1,26 @@
-<h5>Download</h5>
+<div class="row">
+    <div class="col-2">
+        <h5>Download</h5>
+    </div>
 
-<a href="#">
-    <button class="btn btn-outline-secondary">CSV</button>
-</a>
-<a href="#">
-    <button class="btn btn-default">CSV</button>
-</a>
-<a href="#">
-    <button class="btn btn-default">CSV</button>
-</a>
-<a href="#">
-    <button class="btn btn-default">CSV</button>
-</a>
+    <div class="col-9">
+        <a href="{{ route('export.file', ['type'=> $search == false ? "csv" : "csv-search"]) }}">
+            <button class="btn btn-lg btn-csv margin-right-1rem">CSV</button>
+        </a>
+        <a href="{{ route('export.file', ['type'=> $search == false ? "xls" : "xls-search"]) }}">
+            <button class="btn btn-lg btn-xls margin-right-1rem">XLS</button>
+        </a>
+        <a href="{{ route('export.file', ['type'=> $search == false ? "xlsx" : "xlsx-search"]) }}">
+            <button class="btn btn-lg btn-xlsx margin-right-1rem">XLSX</button>
+        </a>
+        <a href="#">
+            <button class="btn btn-lg btn-jpeg margin-right-1rem">JPEG</button>
+        </a>
+        <a href="#">
+            <button class="btn btn-lg btn-map margin-right-1rem">Map Layer</button>
+        </a>
+    </div>
+</div>
 
 
 {{--<a href="{{ route('export.file',['type'=> $search == "0" ? "csv" : "csv-search"]) }}">--}}
