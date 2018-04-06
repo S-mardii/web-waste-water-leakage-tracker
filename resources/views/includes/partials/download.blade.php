@@ -4,16 +4,16 @@
     </div>
 
     <div class="col-9">
-        <a href="{{ route('export.file', ['type'=> $search == false ? "csv" : "csv-search"]) }}">
+        <a href="{{ route('data.export.file', ['type'=> $search == false ? "csv" : "csv-search"]) }}">
             <button class="btn btn-lg btn-csv margin-right-1rem">CSV</button>
         </a>
-        <a href="{{ route('export.file', ['type'=> $search == false ? "xls" : "xls-search"]) }}">
+        <a href="{{ route('data.export.file', ['type'=> $search == false ? "xls" : "xls-search"]) }}">
             <button class="btn btn-lg btn-xls margin-right-1rem">XLS</button>
         </a>
-        <a href="{{ route('export.file', ['type'=> $search == false ? "xlsx" : "xlsx-search"]) }}">
+        <a href="{{ route('data.export.file', ['type'=> $search == false ? "xlsx" : "xlsx-search"]) }}">
             <button class="btn btn-lg btn-xlsx margin-right-1rem">XLSX</button>
         </a>
-        <a href="#">
+        <a href="{{ route('data.download.images', ['type'=> $search == false ? "image" : "image-search"]) }}">
             <button class="btn btn-lg btn-jpeg margin-right-1rem">JPEG</button>
         </a>
         <a href="#">

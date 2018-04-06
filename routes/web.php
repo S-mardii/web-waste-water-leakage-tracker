@@ -8,12 +8,16 @@ Route::get('/', 'MapController@imagespagination')->name('map.index');
 // Data Route
 Route::get('/data', 'DataController@index')->name('data.index');
 Route::post('/data', 'DataController@search')->name('data.search');
+Route::get('/data/export/{type}', 'DataController@exportFile')->name('data.export.file');
+Route::get('/data/export/images/{type}' ,'DataController@downloadImages')->name('data.download.images');
 
 // Team Route
 Route::get('/team', 'TeamController@index')->name('team.index');
 
 // About Us page
 Route::get('/about-us', 'HomeController@aboutUs')->name('about-us.index');
+
+Route::get('/disclaimer', 'DisclaimerController@index')->name('disclaimer.index');
 
 Route::get('/language', "MapController@languageswitcher");
 Route::post('/language', array(
