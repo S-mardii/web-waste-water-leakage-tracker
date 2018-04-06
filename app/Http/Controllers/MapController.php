@@ -27,7 +27,7 @@ class MapController extends Controller
     {
         $datas = (new PostModel())->getPostPagination();
         $maps = collect($datas->items());
-        return view('homepage.map', [
+        return view('pages.map', [
             "datas"      => $datas,
             "maps"       => $maps,
             "conditions" => (new ConditionModel())->getConditions(),
@@ -37,6 +37,13 @@ class MapController extends Controller
         ]);
     }
 
+    /**
+     * Search on Map
+     *
+     * @param Request $request
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function search(Request $request) {
         $condition_id = (int)$request->condition_id;
         $area_id = (int)$request->area_id;
@@ -48,13 +55,15 @@ class MapController extends Controller
         //set a sesstion for search
         $request->session()->put('search', [$area_id, $condition_id, $from, $to]);
 
-        return view('homepage.map', [
-            "datas" => $pagination,
-            "maps" => $maps,
-            "conditions" => (new ConditionModel())->getConditions(),
-            "areas" => (new AreaModel())->getAreas(),
-            "aboutUs" => (new AboutUs())->getAll(),
-            "search" => "1"
+        return view('pages.map', [
+            'datas' => $pagination,
+            'maps' => $maps,
+            'conditions' => (new ConditionModel())->getConditions(),
+            'areas' => (new AreaModel())->getAreas(),
+            'aboutUs' => (new AboutUs())->getAll(),
+            'search' => true,
+            'from' => $from,
+            'to' => $to,
         ]);
     }
 

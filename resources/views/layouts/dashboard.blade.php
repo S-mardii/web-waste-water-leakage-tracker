@@ -1,4 +1,4 @@
-@extends('layouts.plane')
+@extends('layouts.master')
 @section('body')
     <style>
         .active {

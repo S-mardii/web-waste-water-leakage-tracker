@@ -1,0 +1,21 @@
+{
+  "name": "wwlt-web",
+  "description": "",
+  "main": "",
+  "authors": [
+    "KH-EnviTech"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "animate.css": "^3.5.2",
+    "bootstrap4": "^4.0.0",
+    "Font-Awesome": "^5.0.9"
+  }
+}

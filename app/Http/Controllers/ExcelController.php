@@ -24,8 +24,7 @@ class ExcelController extends Controller
             $param = session()->get('search');
             $posts = (new PostModel())->getSearchAllPost($param[0], $param[1], $param[2], $param[3])->toArray();
         }
-
-        return \Excel::create('hdtuto_demo', function($excel) use ($posts) {
+        return \Excel::create('report', function($excel) use ($posts) {
             $excel->sheet('sheet name', function($sheet) use ($posts)
             {
                 $sheet->fromArray($posts);
