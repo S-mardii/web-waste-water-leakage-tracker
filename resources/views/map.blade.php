@@ -1,5 +1,7 @@
 @extends('layouts.dashboard')
+
 @section('page_heading','Dashboard')
+
 @section('section')
     <head>
         <style>
@@ -39,7 +41,7 @@
             });
 
             var icon_url = window.location.origin + "/marker/";
-            var color_marker = ["red.png","yellow.png","green.png"];
+            var color_marker = ['green.png', 'yellow.png', 'red.png'];
             for (i = 0; i < locations.length; i++) {
                 var url = icon_url + color_marker[locations[i][3] - 1];
 

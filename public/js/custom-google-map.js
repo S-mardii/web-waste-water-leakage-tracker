@@ -10,6 +10,7 @@ function initMap() {
         zoom: 14,
         center: pp
     });
+
     var marker, i;
     var locations = [];
 
@@ -18,23 +19,31 @@ function initMap() {
             data.lat,
             data.lng,
             data.id,
-            data.color
+            data.condition_id,
         ])
     });
 
     var content_info;
 
+    /**
+     * Define Marker Color
+     * @type {Array}
+     */
     var markers = locations.map(function (location, i) {
 
+        var marker_icon = server_url + "marker/"
+        var condition_id = location[3]
 
-        var marker_icon = server_url + "marker/";
-
-        if (location[3] === 1) {
-            marker_icon += "red.png"
-        } else if (location[3] === 2) {
-            marker_icon += "yellow.png"
-        } else {
-            marker_icon += "green.png"
+        switch (condition_id) {
+            case 1:
+                marker_icon += 'green.png';
+                break;
+            case 2:
+                marker_icon += 'yellow.png';
+                break;
+            case 3:
+                marker_icon += 'red.png';
+                break;
         }
 
         console.log(i);
@@ -44,12 +53,18 @@ function initMap() {
             icon: marker_icon
         });
 
+        /**
+         * onClick on Markers
+         */
         google.maps.event.addListener(marker, 'click', (function (marker, i) {
             return function () {
                 window.location.replace(server_url + "report/show/" + i);
             }
         })(marker, locations[i][2]));
 
+        /**
+         * onHover on Markers
+         */
         google.maps.event.addListener(marker, 'mouseover', (function (marker, i) {
             return function () {
                 var image_url = server_url + datas[i].image_url;
@@ -62,6 +77,9 @@ function initMap() {
             }
         })(marker, i));
 
+        /**
+         * onHover on mouseOut
+         */
         google.maps.event.addListener(marker, 'mouseout', (function (marker, i) {
             return function () {
                 content_info.close();
