@@ -20,7 +20,7 @@
                     <li><a href="#" class="text-white">Map</a></li>
                     <li><a href="#" class="text-white">Data</a></li>
                     <li><br></li>
-                    <li><a href="#" class="text-white">Disclaimer</a></li>
+                    <li><a href="{{ route('disclaimer.index') }}" class="text-white">Disclaimer</a></li>
                     <li><a href="#" class="text-white">Term of Use</a></li>
                 </ul>
             </div>

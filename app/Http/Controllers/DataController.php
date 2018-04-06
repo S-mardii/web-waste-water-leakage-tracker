@@ -58,6 +58,9 @@ class DataController extends Controller
         ]);
     }
 
+    /**
+     * @param $type
+     */
     public function exportFile($type)
     {
         $result = explode("-", $type);
@@ -69,11 +72,44 @@ class DataController extends Controller
             $posts = (new PostModel())->getSearchAllPost($param[0], $param[1], $param[2], $param[3])->toArray();
         }
 
-        return Excel::create('hdtuto_demo', function($excel) use ($posts) {
+        return Excel::create('report', function($excel) use ($posts) {
             $excel->sheet('sheet name', function($sheet) use ($posts)
             {
                 $sheet->fromArray($posts);
             });
         })->download($type);
+    }
+
+    /**
+     * Export JPEG image album in ZIP according to search
+     *
+     * @param $type
+     *
+     * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
+     */
+    function downloadImages($type)
+    {
+        $result = explode("-", $type);
+        if (count($result) == 1) {
+            $posts = (new PostModel())->getAllPost();
+        } else {
+            $param = session()->get('search');
+            $posts = (new PostModel())->getSearchAllPost($param[0], $param[1], $param[2], $param[3]);
+        }
+
+        $zip_path = 'zip/images.zip';
+        if(\File::exists($zip_path)) {
+            \File::delete($zip_path);  // or unlink($filename);
+        }
+
+        $files_array = [];
+
+        foreach ($posts as $file){
+            array_push($files_array, $file->image_url);
+        }
+
+        \Zipper::make(public_path($zip_path))->add($files_array)->close();
+
+        return response()->download(public_path('zip/images.zip'));
     }
 }

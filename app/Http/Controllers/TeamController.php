@@ -8,7 +8,7 @@ class TeamController extends Controller
 {
     public function index()
     {
-        return view('pages.data', [
+        return view('pages.team', [
             'aboutUs' => (new AboutUs())->getAll()
         ]);
     }
