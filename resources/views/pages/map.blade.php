@@ -70,7 +70,7 @@
 @push('after-scripts')
     <script>
         var server_url = window.location.origin + "/";
-        var datas = {!! json_encode($maps->toArray()) !!};
+        var reports = {!! json_encode($reports, JSON_PRETTY_PRINT) !!};
     </script>
 
     <script src="{{ asset('js/custom-google-map.js') }}"></script>

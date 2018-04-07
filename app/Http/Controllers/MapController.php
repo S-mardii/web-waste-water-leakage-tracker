@@ -8,24 +8,26 @@ use App\ConditionModel;
 use App\PostModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Session;
-use function PHPSTORM_META\map;
 
 class MapController extends Controller
 {
+    /**
+     * Display the reported Locations on Map View
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
-        $datas = (new PostModel())->getPost();
-        $maps = collect($datas->items());
-        return view('map', [
-            "datas" => $datas,
-            "maps" => $maps
+        $reports = PostModel::all();
+        return view('pages.map', [
+            'reports' => $reports
         ]);
     }
 
     public function imagespagination()
     {
         $datas = (new PostModel())->getPostPagination();
+        dd($datas);
         $maps = collect($datas->items());
         return view('pages.map', [
             "datas"      => $datas,
