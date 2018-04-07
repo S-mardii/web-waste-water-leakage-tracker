@@ -11,15 +11,16 @@ function initMap() {
         center: pp
     });
 
-    var marker, i;
-    var locations = [];
+    var locations = []
 
-    datas.forEach(function (data) {
+    var marker, i
+
+    reports.forEach(function (report) {
         locations.push([
-            data.lat,
-            data.lng,
-            data.id,
-            data.condition_id,
+            report.lat,
+            report.lng,
+            report.id,
+            report.condition_id
         ])
     });
 
@@ -46,7 +47,6 @@ function initMap() {
                 break;
         }
 
-        console.log(i);
         marker = new google.maps.Marker({
             position: new google.maps.LatLng(location[0], location[1]),
             map: map,
@@ -58,7 +58,7 @@ function initMap() {
          */
         google.maps.event.addListener(marker, 'click', (function (marker, i) {
             return function () {
-                window.location.replace(server_url + "report/show/" + i);
+                window.location.replace(server_url + 'report/show/' + i);
             }
         })(marker, locations[i][2]));
 
@@ -67,7 +67,7 @@ function initMap() {
          */
         google.maps.event.addListener(marker, 'mouseover', (function (marker, i) {
             return function () {
-                var image_url = server_url + datas[i].image_url;
+                var image_url = server_url + reports[i].image_url;
                 var content = '<img src="' + image_url + '" alt="water waste" height="200" width="200">';
                 content_info = new google.maps.InfoWindow({
                     content: content
@@ -89,8 +89,7 @@ function initMap() {
         return marker;
     });
 
-    var markerCluster = new MarkerClusterer(map, markers,
-        {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
-
-
+    var markerCluster = new MarkerClusterer(map, markers, {
+        imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
+    });
 }
