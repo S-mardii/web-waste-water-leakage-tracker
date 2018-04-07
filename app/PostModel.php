@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class PostModel extends Model
 {
+    protected $table = "post";
+
     public function getPost(){
         $this->table = "post";
         return $this

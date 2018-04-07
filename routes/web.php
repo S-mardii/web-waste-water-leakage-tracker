@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 // Map Route
-Route::get('/', 'MapController@imagespagination')->name('map.index');
+Route::get('/', 'MapController@index')->name('map.index');
 
 // Data Route
 Route::get('/data', 'DataController@index')->name('data.index');
@@ -30,16 +30,15 @@ Route::get('export-file/{type}', 'ExcelController@exportFile')->name('export.fil
 Route::get('download-image/{type}', 'ExcelController@downloadImage');
 //end export
 
-Route::get("/map", "MapController@index");
 Route::post('/', 'MapController@search')->name('map.search');
 Route::get('/editprofile', 'UserController@edit');
 
 Route::auth();
-
-Route::get("logout", function () {
-    \Auth::logout();
-    return Redirect("/");
-});
+//
+//Route::get("logout", function () {
+//    \Auth::logout();
+//    return Redirect("/");
+//});
 
 Route::group(['prefix' => 'report', 'middleware' => 'auth'], function () {
     Route::get('/', "PostController@getpost");

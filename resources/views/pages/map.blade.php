@@ -70,12 +70,11 @@
 @push('after-scripts')
     <script>
         var server_url = window.location.origin + "/";
-        var datas = {!! json_encode($maps->toArray()) !!};
+        var reports = {!! json_encode($reports, JSON_PRETTY_PRINT) !!};
     </script>
 
     <script src="{{ asset('js/custom-google-map.js') }}"></script>
-    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
-    </script>
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3jPeBinj-48R5SB3cLd3gT-MgtTlQXM8&callback=initMap">
     </script>
