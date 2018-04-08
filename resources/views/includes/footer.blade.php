@@ -1,14 +1,14 @@
 <div class="row">
     <div class="col-7">
         <div>
-            <h5 class="text-white">Waste Water Leakage Tracker</h5>
+            <h5 class="text-white">OD4D Cambodia: <small> Waste Water Leakage Tracker</small></h5>
             <p class="text-justify text-white padding-1-rem">
-                {{ $aboutUs['aboutUs'] }}
+                <strong>Open Data for Development</strong> is a social project which aims to develop open source ICT platform for generating open data under crowdsourcing or citizen science approach. Our pilot is focusing specifically on generating the location of waste water leakage in Phnom Penh under the theme of environment.
             </p>
         </div>
         <div>
-            <h6 class="text-white">Copyright &copy;2018 | Powered by
-                <a href="http://35.198.215.226/" target="_blank"><strong>Flex Team</strong></a>
+            <h6 class="text-white">Copyright &copy;2018 | Developed by
+                <a href="#"><strong>Flex Team</strong></a>
             </h6>
         </div>
     </div>
@@ -22,6 +22,7 @@
                     <li><br></li>
                     <li><a href="{{ route('disclaimer.index') }}" class="text-white">Disclaimer</a></li>
                     <li><a href="#" class="text-white">Term of Use</a></li>
+                    <li><a href="{{ route('policy-privacy') }}" class="text-white">Policy & Privacy</a></li>
                 </ul>
             </div>
             <div class="col-7">
@@ -35,7 +36,7 @@
                     <a href="https://www.facebook.com/WasteWaterLeakageTracker/" class="social-icon text-white" title="Our Facebook Page" target="_blank">
                         <i class="fab fa-facebook-square"></i>
                     </a>
-                    <a href="#" class="social-icon text-white" title="Get Mobile Application" target="_blank">
+                    <a href="https://play.google.com/apps/testing/com.cambodia.od4d.wastewaterleakagetracker" class="social-icon text-white" title="Get Mobile Application" target="_blank">
                         <i class="fab fa-google-play"></i>
                     </a>
                 </div>

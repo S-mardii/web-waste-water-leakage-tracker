@@ -20,6 +20,10 @@ Route::get('/about-us', 'HomeController@aboutUs')->name('about-us.index');
 
 Route::get('/disclaimer', 'DisclaimerController@index')->name('disclaimer.index');
 
+Route::get('/policy-privacy', function () {
+    return view('pages.policy-privacy');
+})->name('policy-privacy');
+
 Route::get('/language', "MapController@languageswitcher");
 Route::post('/language', array(
     'Middleware' => 'LanguageSwitcher',
