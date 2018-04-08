@@ -12,9 +12,9 @@
             <li class="nav-item">
                 <a class="nav-link padding-1-rem" href="{{ route('data.index') }}"><i class="fas fa-database"></i> Data</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link padding-1-rem" href="{{ route('team.index') }}"><i class="fas fa-users"></i> Team</a>
-            </li>
+            {{--<li class="nav-item">--}}
+                {{--<a class="nav-link padding-1-rem" href="{{ route('team.index') }}"><i class="fas fa-users"></i> Team</a>--}}
+            {{--</li>--}}
             <li class="nav-item">
                 <a class="nav-link padding-1-rem" href="{{ route('about-us.index') }}"><i class="fas fa-info-circle"></i> About</a>
             </li>
