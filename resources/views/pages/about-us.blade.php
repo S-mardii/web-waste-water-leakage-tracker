@@ -2,15 +2,41 @@
 
 @section ('body')
     <div class="container">
-        <div class="about-us">
-            <h2>About Us</h2>
-            <p class="font-size-17-px">{{ $aboutUs['aboutUs'] }}</p>
-        </div>
+        <section class="background">
+            <h3>Background</h3>
+            <div class="py-2">
+                <p class="text-justify">
+                    <strong>OD4D-Cambodia | Open Data for Development</strong> is a social project which aims to develop open source ICT platform for generating open data under crowdsourcing or citizen science approach. Our pilot is focusing specifically on generating the location of waste water leakage in Phnom Penh under the theme of environment.
+                </p>
+                <p class="text-justify">
+                    The project idea was formed during the fascinating two-day workshop, <a href="https://techcamp.america.gov/techcamps/techcamp-cambodia/">TechCamp Cambodia - TechCamp H2.0: Supporting Healthy Waterways in the Lower Mekong</a>. This event was held on September 24-25, 2016 in Phnom Penh, Cambodia. After the event, we applied and have successfully won the grant from TechCamp Cambodia to implement our idea into real action.
+                </p>
+            </div>
+        </section>
 
-        <div class="disclaimer">
-            <h2>Disclaimer</h2>
-            <p class="font-size-17-px">{{ $aboutUs['disclaimer']}} </p>
-        </div>
+        {{--<section class="motto">--}}
+            {{--<h3>Motto</h3>--}}
+            {{--<blockquote class="blockquote">--}}
+                {{--<p class="mb-0">--}}
+                    {{--" <br>--}}
+                    {{--Any One of <br>--}}
+                    {{--Any Skill or <br>--}}
+                    {{--Any Expertise can surely contribute for better environment. <br>--}}
+                    {{--"--}}
+                {{--</p>--}}
+            {{--</blockquote>--}}
+        {{--</section>--}}
+
+        <section class="supporters pt-2">
+            <div class="py-3">
+                <img src="{{ asset('images/partners/techcamp.jpg') }}">
+            </div>
+        </section>
+
+        {{--<div class="disclaimer">--}}
+            {{--<h2>Disclaimer</h2>--}}
+            {{--<p class="font-size-17-px">{{ $aboutUs['disclaimer']}} </p>--}}
+        {{--</div>--}}
 
 
         <!-- Hidden section -->
