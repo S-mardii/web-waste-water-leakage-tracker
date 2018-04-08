@@ -3,10 +3,32 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class PostModel extends Model
 {
-    protected $table = "post";
+    /**
+     * @var string
+     */
+    protected $table = 'post';
+
+    /**
+     * Search the posts by date
+     *
+     * @param string $fromDate
+     * @param string $toDate
+     *
+     * @return mixed
+     */
+    public function searchByDate(string $fromDate, string $toDate)
+    {
+        $reports = DB::table('post')
+                        ->where('created_at', '>=', $fromDate)
+                        ->where('created_at', '<=', $toDate)
+                        ->get();
+
+        return $reports;
+    }
 
     public function getPost(){
         $this->table = "post";

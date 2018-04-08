@@ -24,6 +24,26 @@ class MapController extends Controller
         ]);
     }
 
+    /**
+     * Search the data for map by date
+     *
+     * @param Request $request
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function searchByDate(Request $request)
+    {
+        $post = new PostModel();
+
+        $reports = $post->searchByDate($request->from, $request->to);
+
+        return view('pages.map', [
+            'reports' => $reports,
+            'from'    => $request->from,
+            'to'      => $request->to,
+        ]);
+    }
+
     public function imagespagination()
     {
         $datas = (new PostModel())->getPostPagination();
@@ -57,7 +77,7 @@ class MapController extends Controller
         $request->session()->put('search', [$area_id, $condition_id, $from, $to]);
 
         return view('pages.map', [
-            'datas' => $pagination,
+            'reports' => $pagination,
             'maps' => $maps,
             'conditions' => (new ConditionModel())->getConditions(),
             'areas' => (new AreaModel())->getAreas(),

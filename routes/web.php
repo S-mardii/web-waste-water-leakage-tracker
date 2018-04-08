@@ -2,19 +2,20 @@
 
 use Illuminate\Support\Facades\Route;
 
-// Map Route
+// Map Routes
 Route::get('/', 'MapController@index')->name('map.index');
+Route::post('/', 'MapController@searchByDate')->name('map.search');
 
-// Data Route
+// Data Routes
 Route::get('/data', 'DataController@index')->name('data.index');
 Route::post('/data', 'DataController@search')->name('data.search');
 Route::get('/data/export/{type}', 'DataController@exportFile')->name('data.export.file');
 Route::get('/data/export/images/{type}' ,'DataController@downloadImages')->name('data.download.images');
 
-// Team Route
+// Team Routes
 Route::get('/team', 'TeamController@index')->name('team.index');
 
-// About Us page
+// About Us pages
 Route::get('/about-us', 'HomeController@aboutUs')->name('about-us.index');
 
 Route::get('/disclaimer', 'DisclaimerController@index')->name('disclaimer.index');
@@ -30,7 +31,6 @@ Route::get('export-file/{type}', 'ExcelController@exportFile')->name('export.fil
 Route::get('download-image/{type}', 'ExcelController@downloadImage');
 //end export
 
-Route::post('/', 'MapController@search')->name('map.search');
 Route::get('/editprofile', 'UserController@edit');
 
 Route::auth();
