@@ -5,7 +5,7 @@
 <head>
 	@include('includes.head')
 
-	<title> Waste Water Leakage Tracker </title>
+	<title> OD4D Cambodia </title>
 
 	@stack('after-styles')
 </head>
@@ -18,7 +18,7 @@
 	</div>
 
 	<footer class="page-footer center-on-small-only text-color">
-		<div class="container-fluid bg-dark padding-1-5-rem">
+		<div class="container-fluid bg-dark padding-1-rem">
 			@include('includes.footer')
 		</div>
 
