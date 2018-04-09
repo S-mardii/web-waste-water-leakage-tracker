@@ -5,6 +5,8 @@
 <head>
     @include('includes.head')
 
+    <title> OD4D Cambodia | Waste Water Leakage Tracker </title>
+
     @stack('after-styles')
 </head>
 
