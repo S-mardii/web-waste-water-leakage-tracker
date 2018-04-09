@@ -29,7 +29,7 @@
 
         <section class="supporters pt-2">
             <div class="py-3">
-                <img src="{{ asset('images/partners/techcamp.jpg') }}">
+                <img class="img-fluid" src="{{ asset('images/partners/techcamp.jpg') }}">
             </div>
         </section>
 
