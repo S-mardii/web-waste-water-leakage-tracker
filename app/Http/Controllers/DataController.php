@@ -2,33 +2,51 @@
 
 namespace App\Http\Controllers;
 
-use App\AboutUs;
-use App\AreaModel;
-use App\ConditionModel;
 use App\PostModel;
+use App\Repositories\ReportRepository;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Excel;
 
 class DataController extends Controller
 {
+    /**
+     * @var ReportRepository
+     */
+    protected $reports;
+
+    /**
+     * DataController constructor.
+     *
+     * @param ReportRepository $reports
+     */
+    public function __construct(ReportRepository $reports)
+    {
+        $this->reports = $reports;
+    }
+
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        $datas = (new PostModel())->getPostPagination();
+        $reportList = [
+            'Low'     => [],
+            'Medium'  => [],
+            'Serious' => []
+        ];
+
+        foreach ($reportList as $condition => $report) {
+            $report = $this->reports->getByConditionName($condition)->get();
+            $reportList[$condition]['data'] = $report;
+        }
 
         return view('pages.data', [
-            'datas'      => $datas,
-            'search'     => false,
-            'aboutUs'    => (new AboutUs())->getAll(),
-            'conditions' => (new ConditionModel())->getConditions(),
-            'areas'      => (new AreaModel())->getAreas(),
+            'datas'  => $reportList,
+            'search' => false
         ]);
     }
 
     /**
-     * Search Open Data
+     * Search the reports (based on date)
      *
      * @param Request $request
      *
@@ -36,27 +54,75 @@ class DataController extends Controller
      */
     public function search(Request $request)
     {
-        $condition_id = (int)$request->condition_id;
-        $area_id = (int)$request->area_id;
-        $from = $request->from;
-        $to = $request->to;
+        $reportList = [
+            'Low'     => [],
+            'Medium'  => [],
+            'Serious' => []
+        ];
 
-        $pagination = (new PostModel())->search($area_id, $condition_id, $from, $to);
-        $maps = collect($pagination->items());
-        //set a sesstion for search
-        $request->session()->put('search', [$area_id, $condition_id, $from, $to]);
+        $from = $request['from'];
+        $to = $request['to'];
+
+        foreach ($reportList as $condition => $report) {
+            $report = $this->reports->searchBetweenDate($from, $to);
+            $report = $this->reports->getByConditionName($condition, $report);
+            $reportList[$condition]['data'] = $report;
+        }
 
         return view('pages.data', [
-            'datas'      => $pagination,
-            'maps'       => $maps,
-            'conditions' => (new ConditionModel())->getConditions(),
-            'areas'      => (new AreaModel())->getAreas(),
-            'aboutUs'    => (new AboutUs())->getAll(),
-            'search'     => true,
-            'from'       => $from,
-            'to'         => $to,
+            'datas'  => $reportList,
+            'search' => true,
+            'from'   => $from,
+            'to'     => $to
         ]);
     }
+
+//    /**
+//     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+//     */
+//    public function index()
+//    {
+//        $datas = (new PostModel())->getPostPagination();
+//
+//        return view('pages.data', [
+//            'datas'      => $datas,
+//            'search'     => false,
+//            'aboutUs'    => (new AboutUs())->getAll(),
+//            'conditions' => (new ConditionModel())->getConditions(),
+//            'areas'      => (new AreaModel())->getAreas(),
+//        ]);
+//    }
+
+//    /**
+//     * Search Open Data
+//     *
+//     * @param Request $request
+//     *
+//     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+//     */
+//    public function search(Request $request)
+//    {
+//        $condition_id = (int)$request->condition_id;
+//        $area_id = (int)$request->area_id;
+//        $from = $request->from;
+//        $to = $request->to;
+//
+//        $pagination = (new PostModel())->search($area_id, $condition_id, $from, $to);
+//        $maps = collect($pagination->items());
+//        //set a sesstion for search
+//        $request->session()->put('search', [$area_id, $condition_id, $from, $to]);
+//
+//        return view('pages.data', [
+//            'datas'      => $pagination,
+//            'maps'       => $maps,
+//            'conditions' => (new ConditionModel())->getConditions(),
+//            'areas'      => (new AreaModel())->getAreas(),
+//            'aboutUs'    => (new AboutUs())->getAll(),
+//            'search'     => true,
+//            'from'       => $from,
+//            'to'         => $to,
+//        ]);
+//    }
 
     /**
      * @param $type
