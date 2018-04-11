@@ -30,6 +30,17 @@ class PostModel extends Model
         return $reports;
     }
 
+    /**
+     * A report can have only one condition
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function condition()
+    {
+        return $this->belongsTo('App\ConditionModel', 'condition_id');
+    }
+
+
     public function getPost(){
         $this->table = "post";
         return $this

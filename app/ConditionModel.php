@@ -6,6 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class ConditionModel extends Model
 {
+    /**
+     * @var string
+     */
+    protected $table = 'conditions';
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function report()
+    {
+        return $this->hasMany('App\PostModel');
+    }
+
+
     public function getConditions(){
         $this->table = "conditions";
         return $this->paginate(10);
