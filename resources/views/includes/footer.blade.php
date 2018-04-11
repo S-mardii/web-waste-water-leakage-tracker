@@ -17,8 +17,8 @@
             <div class="col">
                 <h5 class="text-white">Our Services</h5>
                 <ul class="no-list-style padding-1-rem">
-                    <li><a href="#" class="text-white">Map</a></li>
-                    <li><a href="#" class="text-white">Data</a></li>
+                    <li><a href="{{ route('map.index') }}" class="text-white">Map</a></li>
+                    <li><a href="{{ route('data.index') }}" class="text-white">Open Data</a></li>
                     <li><br></li>
                     <li><a href="{{ route('disclaimer.index') }}" class="text-white">Disclaimer</a></li>
                     <li><a href="#" class="text-white">Term of Use</a></li>
@@ -26,7 +26,7 @@
                 </ul>
             </div>
             <div class="col-7">
-                <h5 class="text-white">Get Involve</h5>
+                <h5 class="text-white">Get Involved</h5>
                 <div class="padding-1-rem">
                     <p class="text-white"><i class="fas fa-at"></i>&nbsp; kh.envitech@gmail.com</p>
                     <p class="text-white">&nbsp;<i class="fas fa-phone-volume"></i>&nbsp; 855-(0)-17-977-814</p>
