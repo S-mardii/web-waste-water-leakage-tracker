@@ -13,7 +13,7 @@
 <body>
     @include('includes.header')
 
-    <div class="padding-1-rem">
+    <div class="margin-top-1-rem">
         @yield('body')
     </div>
 
