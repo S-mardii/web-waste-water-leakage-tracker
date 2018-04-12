@@ -27,7 +27,17 @@
 
     #map {
         width: 100%;
-        height: 80%;
+        height: 73%; /* height: 80%; when rollout from beta version*/
+    }
+
+    #legend {
+        font-family: Arial, sans-serif;
+        margin: 10px;
+        min-width: 7rem;
+    }
+
+    #legend img {
+        vertical-align: middle;
     }
 
     /*#over_map { position: absolute; top: 10px; left: 10px; z-index: 99; }*/
@@ -61,6 +71,11 @@
     <div class="container-fluid">
         <div class="row">
             <div id="map"></div>
+
+            <div class="card" id="legend">
+                <div class="card-header p-2">
+                    <h6 class="mb-0">Legend</h6>
+            </div>
         </div>
     </div>
     {{-- google-map --}}
@@ -69,12 +84,12 @@
 
 @push('after-scripts')
     <script>
-        var server_url = window.location.origin + "/";
-        var reports = {!! json_encode($reports, JSON_PRETTY_PRINT) !!};
+        let server_url = window.location.origin + '/';
+        let reports = {!! json_encode($reports, JSON_PRETTY_PRINT) !!};
     </script>
 
     <script src="{{ asset('js/custom-google-map.js') }}"></script>
-    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+    <script src="{{ asset('js/vendors/markerclusterer/src/markerclusterer.js') }}"></script>
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3jPeBinj-48R5SB3cLd3gT-MgtTlQXM8&callback=initMap">
     </script>
