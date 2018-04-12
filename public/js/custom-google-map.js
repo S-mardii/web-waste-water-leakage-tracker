@@ -1,95 +1,85 @@
-function mapLayout() {
-
-}
-
 function initMap() {
-    // var pp = {lat: 47.06976, lng: 15.43154};
-    var pp = {lat: 11.5750526, lng: 104.9491128};
+    const phnom_penh = {lat: 11.577478, lng: 104.914305};
 
-    var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 14,
-        center: pp
-    });
+    // Define the options on embedded Google Map
+    let mapOptions = {
+        center: phnom_penh,
+        zoom: 12,
+        mapTypeId: 'roadmap',
 
-    var locations = []
+        zoomControlOptions: {
+            position: google.maps.ControlPosition.RIGHT_CENTER
+        },
 
-    var marker, i
+        streetViewControlOptions: {
+            position: google.maps.ControlPosition.RIGHT_CENTER
+        },
+    }
 
-    reports.forEach(function (report) {
-        locations.push([
-            report.lat,
-            report.lng,
-            report.id,
-            report.condition_id
-        ])
-    });
+    // Declare google map layer with the defined map options
+    let map = new google.maps.Map(document.getElementById('map'), mapOptions)
 
-    var content_info;
+    // Define map markers
+    let baseMarker = server_url + 'icons/markers/'
+    let icons = {
+        low: {
+            name: 'Low',
+            icon: baseMarker + 'green.png',
+            legendIcon: baseMarker + 'greenx16.png'
+        },
+        medium: {
+            name: 'Medium',
+            icon: baseMarker + 'yellow.png',
+            legendIcon: baseMarker + 'yellowx16.png'
+        },
+        serious: {
+            name: 'Serious',
+            icon: baseMarker + 'red.png',
+            legendIcon: baseMarker + 'redx16.png'
+        }
+    }
 
-    /**
-     * Define Marker Color
-     * @type {Array}
-     */
-    var markers = locations.map(function (location, i) {
-
-        var marker_icon = server_url + "marker/"
-        var condition_id = location[3]
-
-        switch (condition_id) {
+    // Create marker on the map base on condition
+    let markers = reports.map( function (report) {
+        let condition = report.condition_id
+        let icon
+        switch (condition) {
             case 1:
-                marker_icon += 'green.png';
+                icon = icons.low
                 break;
             case 2:
-                marker_icon += 'yellow.png';
+                icon = icons.medium
                 break;
             case 3:
-                marker_icon += 'red.png';
+                icon = icons.serious
                 break;
         }
 
-        marker = new google.maps.Marker({
-            position: new google.maps.LatLng(location[0], location[1]),
+        let marker = new google.maps.Marker({
+            position: new google.maps.LatLng(report.lat, report.lng),
+            icon: icon.icon,
             map: map,
-            icon: marker_icon
-        });
+        })
+        return marker
+    })
 
-        /**
-         * onClick on Markers
-         */
-        google.maps.event.addListener(marker, 'click', (function (marker, i) {
-            return function () {
-                window.location.replace(server_url + 'report/show/' + i);
-            }
-        })(marker, locations[i][2]));
-
-        /**
-         * onHover on Markers
-         */
-        google.maps.event.addListener(marker, 'mouseover', (function (marker, i) {
-            return function () {
-                var image_url = server_url + reports[i].image_url;
-                var content = '<img src="' + image_url + '" alt="water waste" height="200" width="200">';
-                content_info = new google.maps.InfoWindow({
-                    content: content
-                });
-
-                content_info.open(map, marker);
-            }
-        })(marker, i));
-
-        /**
-         * onHover on mouseOut
-         */
-        google.maps.event.addListener(marker, 'mouseout', (function (marker, i) {
-            return function () {
-                content_info.close();
-            }
-        })(marker, location[2]));
-
-        return marker;
+    // Add marker clustering
+    let markerCluster = new MarkerClusterer(map, markers, {
+        imagePath: server_url + 'js/vendors/markerclusterer/images/m'
     });
 
-    var markerCluster = new MarkerClusterer(map, markers, {
-        imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
-    });
+    // Add map legend
+    let legend = document.getElementById('legend')
+    for (let key in icons) {
+        let type = icons[key]
+        console.log(type)
+        let name = type.name
+        let icon = type.legendIcon
+        let div = document.createElement('div')
+        div.className = 'card-body p-2'
+        div.innerHTML = '<img src="' + icon + '"> ' + name
+        legend.appendChild(div)
+    }
+
+    map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend)
 }
